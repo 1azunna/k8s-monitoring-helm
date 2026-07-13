@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+*   Fix Beyla auto-instrumentation discarding the default `discovery` targets (`instrument`/`exclude_instrument`) when a user set any other field under `discovery`, such as `exclude_otel_instrumented_services`. The defaults are now applied per-field, so a partial `discovery` config no longer stops Beyla from discovering services. (#2332) (@petewall)
 *   Add `host-tracefs` collector preset.
 *   Remove empty `image` and `container` labels from cAdvisor's `container_pressure_.*` metrics (#2561) (@petewall)
 *   Infer `auth.type: basic` for remote configuration and destinations when a username and password are set but `auth.type` is not. (#2809) (@TylerHelmuth)
