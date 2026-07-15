@@ -131,8 +131,8 @@ prometheus.scrape {{ printf "%s_sidecar" (include "helper.alloy_name" .name) | q
 
 prometheus.relabel {{ printf "%s_sidecar" (include "helper.alloy_name" .name) | quote }} {
   max_cache_size = {{ .sidecarMetrics.maxCacheSize | default $.Values.global.maxCacheSize | int }}
-{{- if .sidecar.extraMetricProcessingRules }}
-{{ .sidecar.extraMetricProcessingRules | indent 2 }}
+{{- if .sidecarMetrics.extraMetricProcessingRules }}
+{{ .sidecarMetrics.extraMetricProcessingRules | indent 2 }}
 {{- end }}
 {{- if $metricAllowList }}
   rule {
